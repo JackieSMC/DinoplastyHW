@@ -67,10 +67,10 @@ const app = {
       ev.preventDefault()
       const listHTML = ev.target.parentElement.parentElement
 
-      if(listHTML.style.backgroundColor == 'lightgreen') {
+      if(listHTML.style.backgroundColor == 'lightblue') {
         listHTML.style.backgroundColor = 'whitesmoke'
       } else {
-        listHTML.style.backgroundColor = 'lightgreen'
+        listHTML.style.backgroundColor = 'lightblue'
       }
   },
   
@@ -107,11 +107,11 @@ const app = {
     up.textContent = 'Up'
 
     const down = document.createElement('a')
-    down.setAttribute('class', 'success button')
+    down.setAttribute('class', 'primary button')
     down.textContent = 'Down'
 
     const promote = document.createElement('a')
-    promote.setAttribute('class', 'warning button')
+    promote.setAttribute('class', 'success button')
     promote.textContent = 'Promote'
 
     const deleteButton = document.createElement('a')
@@ -139,11 +139,11 @@ const app = {
     up2.textContent = 'Up'
 
     const down2 = document.createElement('a')
-    down2.setAttribute('class', 'success button')
+    down2.setAttribute('class', 'primary button')
     down2.textContent = 'Down'
 
     const promote2 = document.createElement('a')
-    promote2.setAttribute('class', 'warning button')
+    promote2.setAttribute('class', 'success button')
     promote2.textContent = 'Promote'
 
     const deleteButton2 = document.createElement('a')
