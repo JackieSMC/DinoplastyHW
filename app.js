@@ -3,34 +3,52 @@ const app = {
         this.dinos = []
         this.max = 0
         this.list = document.querySelector(selectors.listSelector)
-        document.querySelector(selectors.formSelector).addEventListener('submit', this.addDino.bind(this)) 
+        document.querySelector(selectors.formSelector).addEventListener('submit', this.addDino.bind(this))
+
+        this.load() 
     },
 
+    load() {
+        const dinoJSON = localStorage.getItem('dinos')
+        const dinoArray = JSON.parse(dinoJSON)
+        if (dinoArray) {
+            dinoArry.reverse().map(this.addDino.bind(this))
+        }
+    },
+
+
     addDino(ev) {
+        const listItem = this.renderListItem(dino)
+        this.list.insertBefore(listItem, this.list.firstElementChild)
+        this.dinos.unshift(dino)
+        this.save()
+
+        ++ this.max
+    },
+
+    addDinoFromForm(ev) {
         ev.preventDefault()
-        //const dinoName = ev.target.dinoName.value
         const dino = {//this creates an object with a name property, and id property
             id: this.max + 1,
             name: ev.target.dinoName.value,
         }
-        //console.log(dino.name, dino.id)
-        
-        const listItem = this.renderListItem(dino)
-        this.list.appendChild(listItem)
-        this.dinos.unshift(dino.name)
 
-        ++ this.max
-
+        this.addDino(dino)
         ev.target.reset()
+    },
 
+
+
+    save() {
+        localStorage.setItem('dinos', JSON.stringify(this.dinos))
     },
 
     renderListItem (dino) {
         const item = document.createElement('li')
-        item.textContent = dino.name
-        item.setAttribute('id', `${item.textContent}`)
-
         
+        //item.textContent = dino.name
+        //item.setAttribute('id', `${item.textContent}`)
+
         const buttonDiv = document.createElement('div')
         buttonDiv.setAttribute('class', 'button-group')
 
@@ -40,7 +58,7 @@ const app = {
 
         const down = document.createElement('a')
         down.setAttribute('class', 'primary button')
-        down.textContent = "Down"
+        down.textContent = 'Down'
 
         const promote = document.createElement('a')
         promote.setAttribute('class', 'success button')
